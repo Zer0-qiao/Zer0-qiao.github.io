@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>buuctf（一）</title>
+    <link href="/2025/01/25/buuctf/"/>
+    <url>/2025/01/25/buuctf/</url>
+    
+    <content type="html"><![CDATA[<p>1.[极客大挑战 2019]EasySQL<br> 类型：sql注入<br> 用万能密码即可<br> <br> </p><p>2.[极客大挑战 2019]Havefun<br> 类型：代码审计<br> <br> 查看源代码<br> <br> 有一个cat变量，通过get方式传参，如果cat&#x3D;dog输出flag<br> 构造payload：&#x2F;?cat&#x3D;dog<br> </p><p>3.[HCTF 2018]WarmUp<br> 类型：PHP代码审计<br> <br> 查看源码，发现有一个source.php文件<br> <br> 查看source文件，出现一堆PHP代码<br> <br> 发现里面有一个hint.php文件，查看一下<br> <br> 文件里说明flag在ffffllllaaaagggg里<br> payload: &#x2F;?file&#x3D;hint.php?..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg<br> </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>web</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>sql注入（二）</title>
     <link href="/2025/01/25/sql%E6%B3%A8%E5%85%A5%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <url>/2025/01/25/sql%E6%B3%A8%E5%85%A5%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
